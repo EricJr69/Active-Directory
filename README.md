@@ -2,7 +2,7 @@
 
 ## Introduction
 
-For this project, VMware was utilized to create an integrated environment that consisted of a Windows Server 2019 Virtual Machine (VM) serving as the Domain Controller (DC) with Active Directory (AD) service. A custom PowerShell script was then executed to populate AD with approximately 1000 fictional users. I then created the following VMs:  Windows 10 Pro, Ubuntu 22.04.4, and Ubuntu 23.10.1. The VMs were then integrated into the AD domain to create a centralized management system for user accounts, computers, and other network resources. Initially Virtual Box was utilized with success and later VMware was used to confirm the ability to reproduce in another environment and test a new release of Ubuntu. 
+This project demonstrates the creation of an integrated Active Directory (AD) environment using VMware and VirtualBox. A Windows Server 2019 Virtual Machine (VM) was set up as the Domain Controller (DC) with Active Directory service, and a custom PowerShell script was executed to populate AD with approximately 1000 fictional users. Three additional VMs were created: Windows 10 Pro, Ubuntu 22.04.4, and Ubuntu 23.10.1, and integrated into the AD domain to create a centralized management system for user accounts, computers, and other network resources. Initially, difficulties were encountered when attempting to connect an Ubuntu 22.04.4 VM to Active Directory, but a solution was found and implemented. A review of the lab revealed that Ubuntu 23.10.1 resolved the AD domain joining issue, while Ubuntu 22.04.4 still required the workaround solution.
 
 <br />
 
@@ -16,16 +16,16 @@ For this project, VMware was utilized to create an integrated environment that c
 
 - Active Directory
 - AD Domain Service
-- NAT
 - DNS
+- NAT
 - Networking
-- PowerShell
 - Oracle VirtualBox
-- VMware
-- Windows Server 2019
-- Windows 10 Pro
+- PowerShell
 - Ubuntu 22.04.4
 - Ubuntu 23.10.1
+- VMware
+- Windows 10 Pro
+- Windows Server 2019
 
 <br />
 
@@ -49,7 +49,7 @@ For this project, VMware was utilized to create an integrated environment that c
 
 ## Connecting Ubuntu 22.04.4 to AD
 
-I wanted to expand the lab to include systems other than Windows, so I decided to connect Ubuntu to AD. This was by far the most challenging portion of the lab. One is led to believe that while installing Ubuntu you can simply choose to use AD in the setup, and all will be fine. I never got it to succeed and always ended up getting a failed message. After searching the web, it appears to be a common issue and it took several YouTube videos, official documentation, and various websites to develop a workaround that would allow my VM to connect with AD. <br>
+To expand the lab's scope, I attempted to connect Ubuntu to Active Directory (AD). However, this proved to be the most challenging part of the project. Despite the apparent simplicity of selecting AD during Ubuntu installation, I consistently encountered failure messages. After conducting extensive research online, including YouTube videos, official documentation, and various websites, I discovered that this issue is common and developed a workaround to successfully connect my Ubuntu VM to AD. <br>
 
 ![.conf edit](https://i.imgur.com/sdsE6ppl.png)
 
@@ -79,11 +79,11 @@ Administrator Account: username
 
 ## UPDATE
 
-When reviewing this lab I discovered a new release of Ubuntu 23.10.1. So I decided to investigate if the issue of joining an AD domain was still present. The installation ended up being very straightforward and the ability to join an AD domain from set-up was a success. From there I backtracked and tried a newer version of Ubuntu 22.04.4 and discovered the AD issue still persists; however, my workaround still manages to connect to the AD domain. VMware was also utilized to recreate the lab and verify if any issues encountered might be been related to Virtual Box.      
+During a review of this lab, I discovered a new release of Ubuntu 23.10.1 and investigated whether the issue of joining an AD domain still existed. The installation was straightforward, and joining an AD domain from setup was successful. I then tested a newer version of Ubuntu 22.04.4 and found that the AD issue persists, although my workaround still enables connection to the AD domain. Additionally, I utilized VMware to recreate the lab and verify that the issues encountered were not related to VirtualBox.
 
 ## Conclusion
 
-In this project, VirtualBox was used to create an integrated AD environment. The first VM was Windows Server 2019 that served as the DC, DHCP, and Active Directory populated with approximately 1000 users. Once the networking configurations were complete for the server, I then created three more VMs and connected them to an internal network using Active Directory. I found the initial setup for the Windows VM straightforward; however, I did encounter difficulties by adding the additional goal of connecting an Ubuntu 22.04.4 VM to Active Directory. After researching and testing I was able to find a solution that successfully fixed the problem and have created a project showing how AD can provide centralized management of user accounts, computers, and other network resources. On review I also discovered the release of Ubuntu 23.04.4 had fixed the issue of joing AD on set-up; however, the previous version still has the same difficulties.   
+This project created an integrated AD environment using VirtualBox. The first VM, Windows Server 2019, served as the DC, DHCP, and Active Directory, populated with approximately 1000 users. After completing the server's networking configurations, I created three more VMs and connected them to an internal network using Active Directory. While the initial Windows VM setup was straightforward, I encountered difficulties connecting an Ubuntu 22.04.4 VM to Active Directory. After researching and testing, I found a solution that successfully fixed the problem, demonstrating how AD provides centralized management of user accounts, computers, and network resources. Upon review, I also discovered that Ubuntu 23.10.1 resolved the AD domain joining issue, whereas the previous version still requires a workaround.
 
 ![AD Computers](https://i.imgur.com/ur9L7kXl.png)
 ![DHCP Reservations](https://i.imgur.com/ur9L7kXl.png)
